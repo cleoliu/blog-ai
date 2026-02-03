@@ -11,6 +11,7 @@ tags:
   - productivity
   - automation
 cover_index: https://images.unsplash.com/photo-1677442136019-21780ecad995?w=450&h=450&fit=crop&crop=center
+comments: true
 ---
 
 > 🎯 與其重複解釋同樣的事情，不如教會 AI 一次搞定。

@@ -22,6 +22,11 @@
 <% if (theme.comments && theme.comments.disqus_shortname){ %>
 <script type="text/javascript">
     var disqus_shortname = '<%= theme.comments.disqus_shortname %>';
+    <% if (page.comments){ %>
+    var disqus_url = 'https://cleoliu.github.io/blog-ai/<%= page.path %>';
+    var disqus_identifier = '<%= page.path %>';
+    var disqus_title = '<%= page.title %>';
+    <% } %>
 
     (function(){
         var dsq = document.createElement('script');
