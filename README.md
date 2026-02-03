@@ -87,6 +87,84 @@ npx hexo deploy
 - 支援封面圖片展示
 - 現代化的卡片式佈局
 - 內建社群媒體連結支援
+- 支援 Disqus 留言系統
+
+## 留言系統設定
+
+本部落格使用 [Disqus](https://disqus.com) 作為留言系統。以下是完整的設定步驟：
+
+### 1. Disqus 帳戶設定
+
+1. **註冊 Disqus 帳戶**：
+   - 前往 [disqus.com](https://disqus.com) 註冊帳戶
+   - 登入後點選右上角個人頭像 → "Admin"
+
+2. **建立網站**：
+   - 在 Admin 頁面點選 "Create Site"
+   - 設定網站名稱（例如：Cleo's Blog）
+   - 設定 **Shortname**（這是最重要的設定，例如：`cleoliu`）
+   - 在 "Website URL" 填入：`https://cleoliu.github.io/blog-ai`
+
+3. **記錄 Shortname**：
+   - 在 Settings → General 中可以查看你的 shortname
+   - 這個 shortname 將用於主題配置
+
+### 2. 主題配置
+
+在 `themes/phantom/_config.yml` 中設定：
+
+```yaml
+comments:
+  # Disqus comments
+  disqus_shortname: your-shortname-here  # 替換為你的實際 shortname
+```
+
+### 3. 啟用文章留言
+
+在你想要啟用留言的文章 frontmatter 中添加：
+
+```yaml
+---
+title: 你的文章標題
+date: 2026-02-02 20:02:31
+comments: true  # 啟用留言功能
+---
+```
+
+### 4. 部署與測試
+
+1. **重新生成網站**：
+   ```bash
+   npx hexo clean && npx hexo generate
+   ```
+
+2. **推送到 GitHub Pages**：
+   ```bash
+   git add .
+   git commit -m "Enable Disqus comments"
+   git push origin main
+   ```
+
+3. **確認設定**：
+   - 等待 GitHub Actions 部署完成
+   - 訪問線上版本的文章頁面
+   - 確認 Disqus 留言區正常載入
+
+### 5. 常見問題排除
+
+- **留言區顯示「We were unable to load Disqus」**：
+  - 檢查 Disqus Admin 中的網站 URL 是否正確
+  - 確認 shortname 拼寫正確
+  - 確認文章中有設定 `comments: true`
+
+- **留言區沒有顯示**：
+  - 確認主題配置中的 `disqus_shortname` 已設定
+  - 檢查瀏覽器是否阻擋了第三方腳本
+  - 在本地測試時，Disqus 可能無法在 localhost 上正常運作
+
+- **域名不匹配**：
+  - 在 Disqus Admin → Settings → General 中
+  - 確認 "Website URL" 設定為正確的部署網址
 
 ## 部署
 
