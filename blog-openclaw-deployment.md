@@ -249,6 +249,44 @@ openclaw onboard --auth-choice apiKey --token-provider openrouter --token "你�
 
 缺點：免費配額有限，高峰期可能要排隊。
 
+##### 🆕 openrouter/free — 免費模型自動路由
+
+OpenRouter 最近推出了 `openrouter/free` 這個特殊的路由器模型。它會自動從 OpenRouter 上所有可用的免費模型中隨機選擇一個來處理你的請求。
+
+**特點：**
+- 完全免費（input/output 都是 $0）
+- 智慧選擇：根據你的請求需求（圖片理解、tool calling、structured outputs 等）自動過濾出支援該功能的免費模型
+- 支援多模態輸入（text + image），最高 200k context
+- 無需手動追蹤哪些模型目前免費
+
+**設定範例：**
+
+```json5
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openrouter/openrouter/free"
+      }
+    }
+  }
+}
+```
+
+**目前可能被路由到的免費模型包括：**
+- DeepSeek 系列（當免費時）
+- Kimi（Moonshot AI）
+- StepFun Step 3.5 Flash
+- Upstage Solar Pro 3
+- LiquidAI LFM 系列
+- Arcee AI Trinity
+- 以及其他提供免費額度的模型
+
+**使用建議：**
+- 適合預算極低、對模型一致性要求不高的場景
+- 每次請求可能路由到不同模型，回覆風格會有差異
+- 如果需要穩定的模型行為，還是建議指定特定模型
+
 #### 2. 便宜又好用：Venice AI
 
 Venice AI 是隱私優先的 AI 服務，價格合理，模型選擇多。
@@ -721,7 +759,7 @@ Happy hacking！
 
 ---
 
-*最後更新：2026-02-02*
+*最後更新：2026-02-04*
 
 *參考資料：*
 - [OpenClaw 官方文件](https://docs.openclaw.ai)
