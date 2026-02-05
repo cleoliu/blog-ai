@@ -10,7 +10,7 @@ tags:
   - supabase
   - pwa
   - 寵物科技
-cover_index: https://res.cloudinary.com/dsvl326mi/image/upload/v1770293992/blog_covers/c2egznglswshssppfxxd.png
+cover_index: https://res.cloudinary.com/dsvl326mi/image/upload/c_fill,w_800,h_800,g_center/v1770293992/blog_covers/c2egznglswshssppfxxd.png
 comments: true
 ---
 
